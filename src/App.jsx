@@ -23,6 +23,7 @@ import About from "./components/About";
 import Blog from "./components/Blog";
 import VoiceChanger from "./pages/VoiceChanger";
 import LiveCamEffects from "./pages/LiveCamEffects";
+import CookieConsent from "./components/CookieConsent";
 
 const MainContent = () => {
   const [timeLeft, setTimeLeft] = useState({
@@ -293,93 +294,93 @@ const MainContent = () => {
         </div>
 
         {/* Mobile Navigation */}
-       
-       {
-         isMobileMenuOpen && ( <motion.div
-          initial={false}
-          animate={{
-            height: isMobileMenuOpen ? "auto" : 0,
-            opacity: isMobileMenuOpen ? 1 : 0,
-          }}
-          transition={{ duration: 0.3 }}
-          className="md:hidden bg-gray-900/80 backdrop-blur-md"
-        >
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            <motion.a
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              href="/"
-              className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700"
-            >
-              Home
-            </motion.a>
-            <motion.a
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              href="/voice-changer"
-              className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700"
-            >
-              Voice Changer
-            </motion.a>
-            <motion.a
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              href="/live-cam-effects"
-              className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700"
-            >
-              Live Cam Effects
-            </motion.a>
-            <motion.a
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              href="#pricing"
-              className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700"
-            >
-              Pricing
-            </motion.a>
-            <motion.a
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              href="#features"
-              className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700"
-            >
-              Features
-            </motion.a>
-            <motion.a
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              href="#tutorials"
-              className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700"
-            >
-              Tutorials
-            </motion.a>
-            <motion.a
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              href="/blog"
-              className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700"
-            >
-              Blog
-            </motion.a>
-            <motion.a
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              href="/about"
-              className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700"
-            >
-              About
-            </motion.a>
-            <motion.a
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              href="#contact"
-              className="block px-3 py-2 rounded-md text-base font-medium text-white bg-gradient-to-r from-blue-500 via-pink-500 to-orange-500"
-            >
-              Contact Us
-            </motion.a>
-          </div>
-        </motion.div>)
-       }
+
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={false}
+            animate={{
+              height: isMobileMenuOpen ? "auto" : 0,
+              opacity: isMobileMenuOpen ? 1 : 0,
+            }}
+            transition={{ duration: 0.3 }}
+            className="md:hidden bg-gray-900/80 backdrop-blur-md"
+          >
+            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+              <motion.a
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                href="/"
+                className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700"
+              >
+                Home
+              </motion.a>
+              <motion.a
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                href="/voice-changer"
+                className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700"
+              >
+                Voice Changer
+              </motion.a>
+              <motion.a
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                href="/live-cam-effects"
+                className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700"
+              >
+                Live Cam Effects
+              </motion.a>
+              <motion.a
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                href="#pricing"
+                className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700"
+              >
+                Pricing
+              </motion.a>
+              <motion.a
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                href="#features"
+                className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700"
+              >
+                Features
+              </motion.a>
+              <motion.a
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                href="#tutorials"
+                className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700"
+              >
+                Tutorials
+              </motion.a>
+              <motion.a
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                href="/blog"
+                className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700"
+              >
+                Blog
+              </motion.a>
+              <motion.a
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                href="/about"
+                className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700"
+              >
+                About
+              </motion.a>
+              <motion.a
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                href="#contact"
+                className="block px-3 py-2 rounded-md text-base font-medium text-white bg-gradient-to-r from-blue-500 via-pink-500 to-orange-500"
+              >
+                Contact Us
+              </motion.a>
+            </div>
+          </motion.div>
+        )}
       </nav>
 
       {/* Sale Banner */}
@@ -516,7 +517,7 @@ const MainContent = () => {
                 </motion.div>
               </div>
               <motion.a
-                    href="#pricing"
+                href="#pricing"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="bg-black/20 text-white px-3 sm:px-4 py-1 sm:py-2 rounded-lg font-medium hover:bg-black/30 transition-colors backdrop-blur-sm flex items-center space-x-1 sm:space-x-2 text-sm sm:text-base"
@@ -639,7 +640,7 @@ const MainContent = () => {
                 className="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start"
               >
                 <motion.a
-                 href="#pricing"
+                  href="#pricing"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className="px-8 py-4 bg-gradient-to-r from-blue-500 via-pink-500 to-orange-500 text-white rounded-lg font-medium text-lg hover:opacity-90 transition-opacity flex items-center justify-center"
@@ -660,7 +661,7 @@ const MainContent = () => {
                   </svg>
                 </motion.a>
                 <motion.a
-                href="#demo"
+                  href="#demo"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className="px-8 py-4 bg-white/10 text-white rounded-lg font-medium text-lg hover:bg-white/20 transition-colors flex items-center justify-center"
@@ -1512,7 +1513,7 @@ const MainContent = () => {
             className="mt-16 text-center"
           >
             <motion.a
-                  href="#pricing"
+              href="#pricing"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="px-8 py-4 bg-gradient-to-r from-blue-500 via-pink-500 to-orange-500 text-white rounded-lg font-medium hover:opacity-90 transition-opacity"
@@ -2538,19 +2539,17 @@ const MainContent = () => {
                   </Link>
                 </motion.li>
               </ul>
-
-              
             </motion.div>
-
-
           </div>
           <div className=" flex flex-row justify-center items-center w-full mt-10 border-t border-gray-700 pt-4 ">
             <p>
-  &copy; {new Date().getFullYear()} JhrokeCamera. All rights reserved.
-</p>
-            </div>
+              &copy; {new Date().getFullYear()} JhrokeCamera. All rights
+              reserved.
+            </p>
+          </div>
         </div>
       </footer>
+      <CookieConsent />
     </div>
   );
 };

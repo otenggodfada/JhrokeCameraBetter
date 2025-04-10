@@ -1406,7 +1406,7 @@ const Checkout = () => {
 
               <p className="mt-4 text-sm text-gray-400 text-center">
                 By proceeding with the payment, you agree to our{" "}
-                <a href="#" className="text-blue-400 hover:text-blue-300">
+                <a href="/terms" className="text-blue-400 hover:text-blue-300">
                   Terms of Service
                 </a>
               </p>
