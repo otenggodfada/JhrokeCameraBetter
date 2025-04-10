@@ -21,6 +21,8 @@ import PrivacyPolicy from "./components/PrivacyPolicy";
 import CookiePolicy from "./components/CookiePolicy";
 import About from "./components/About";
 import Blog from "./components/Blog";
+import VoiceChanger from "./pages/VoiceChanger";
+import LiveCamEffects from "./pages/LiveCamEffects";
 
 const MainContent = () => {
   const [timeLeft, setTimeLeft] = useState({
@@ -187,10 +189,19 @@ const MainContent = () => {
               <motion.a
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                href="#features"
+                href="/voice-changer"
                 className="text-gray-300 hover:text-white transition-colors relative group"
               >
-                Features
+                Voice Changer
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 via-pink-500 to-orange-500 transition-all duration-300 group-hover:w-full"></span>
+              </motion.a>
+              <motion.a
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                href="/live-cam-effects"
+                className="text-gray-300 hover:text-white transition-colors relative group"
+              >
+                Live Cam Effects
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 via-pink-500 to-orange-500 transition-all duration-300 group-hover:w-full"></span>
               </motion.a>
               <motion.a
@@ -200,6 +211,15 @@ const MainContent = () => {
                 className="text-gray-300 hover:text-white transition-colors relative group"
               >
                 Pricing
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 via-pink-500 to-orange-500 transition-all duration-300 group-hover:w-full"></span>
+              </motion.a>
+              <motion.a
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                href="#features"
+                className="text-gray-300 hover:text-white transition-colors relative group"
+              >
+                Features
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 via-pink-500 to-orange-500 transition-all duration-300 group-hover:w-full"></span>
               </motion.a>
               <motion.a
@@ -294,10 +314,18 @@ const MainContent = () => {
             <motion.a
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              href="#features"
+              href="/voice-changer"
               className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700"
             >
-              Features
+              Voice Changer
+            </motion.a>
+            <motion.a
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              href="/live-cam-effects"
+              className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700"
+            >
+              Live Cam Effects
             </motion.a>
             <motion.a
               whileHover={{ scale: 1.05 }}
@@ -306,6 +334,14 @@ const MainContent = () => {
               className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700"
             >
               Pricing
+            </motion.a>
+            <motion.a
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              href="#features"
+              className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700"
+            >
+              Features
             </motion.a>
             <motion.a
               whileHover={{ scale: 1.05 }}
@@ -476,7 +512,8 @@ const MainContent = () => {
                   </span>
                 </motion.div>
               </div>
-              <motion.button
+              <motion.a
+                    href="#pricing"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="bg-black/20 text-white px-3 sm:px-4 py-1 sm:py-2 rounded-lg font-medium hover:bg-black/30 transition-colors backdrop-blur-sm flex items-center space-x-1 sm:space-x-2 text-sm sm:text-base"
@@ -495,7 +532,7 @@ const MainContent = () => {
                     d="M13 7l5 5m0 0l-5 5m5-5H6"
                   />
                 </svg>
-              </motion.button>
+              </motion.a>
             </div>
           </div>
         </div>
@@ -598,12 +635,13 @@ const MainContent = () => {
                 transition={{ duration: 0.8, delay: 1 }}
                 className="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start"
               >
-                <motion.button
+                <motion.a
+                 href="#pricing"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className="px-8 py-4 bg-gradient-to-r from-blue-500 via-pink-500 to-orange-500 text-white rounded-lg font-medium text-lg hover:opacity-90 transition-opacity flex items-center justify-center"
                 >
-                  <span>Start Free Trial</span>
+                  <span>Get Started</span>
                   <svg
                     className="w-5 h-5 ml-2"
                     fill="none"
@@ -617,8 +655,9 @@ const MainContent = () => {
                       d="M13 7l5 5m0 0l-5 5m5-5H6"
                     />
                   </svg>
-                </motion.button>
-                <motion.button
+                </motion.a>
+                <motion.a
+                href="#demo"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className="px-8 py-4 bg-white/10 text-white rounded-lg font-medium text-lg hover:bg-white/20 transition-colors flex items-center justify-center"
@@ -643,7 +682,7 @@ const MainContent = () => {
                       d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                     />
                   </svg>
-                </motion.button>
+                </motion.a>
               </motion.div>
 
               <motion.div
@@ -930,14 +969,14 @@ const MainContent = () => {
                       />
 
                       <div className="aspect-video rounded-lg overflow-hidden shadow-2xl group-hover:shadow-pink-500/20 transition-all duration-300">
-                <iframe
-                  src="https://www.youtube.com/embed/-ez0E-dnADM"
+                        <iframe
+                          src="https://www.youtube.com/embed/-ez0E-dnADM"
                           title="JhrokeCamera Demo 4"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowFullScreen
                           className="w-full h-full transform group-hover:scale-105 transition-transform duration-300"
-                ></iframe>
-              </div>
+                        ></iframe>
+                      </div>
                       <div className="mt-8 text-center">
                         <h3 className="text-3xl font-bold text-white mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-pink-500 group-hover:to-orange-500 transition-all duration-300">
                           Full Features Demo
@@ -946,8 +985,8 @@ const MainContent = () => {
                           See all our features working together in a complete
                           demo
                         </p>
-                </div>
-                </div>
+                      </div>
+                    </div>
                   </motion.div>
                 </div>
               </div>
@@ -1469,13 +1508,14 @@ const MainContent = () => {
             transition={{ duration: 0.5, delay: 0.6 }}
             className="mt-16 text-center"
           >
-            <motion.button
+            <motion.a
+                  href="#pricing"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="px-8 py-4 bg-gradient-to-r from-blue-500 via-pink-500 to-orange-500 text-white rounded-lg font-medium hover:opacity-90 transition-opacity"
             >
               Join Our Happy Users
-            </motion.button>
+            </motion.a>
           </motion.div>
         </div>
       </div>
@@ -1599,11 +1639,11 @@ const MainContent = () => {
 
                 <div className="p-8 bg-gray-800/50 backdrop-blur-sm rounded-xl hover:bg-gray-700/50 transition-colors group">
                   <div className="flex items-center mb-6">
-                  <div className="w-16 h-16 bg-gradient-to-r from-blue-500 via-pink-500 to-orange-500 rounded-full flex items-center justify-center text-2xl font-bold mb-6 mx-auto transform group-hover:scale-110 transition-transform duration-300">
-                    {step.number}
-                  </div>
+                    <div className="w-16 h-16 bg-gradient-to-r from-blue-500 via-pink-500 to-orange-500 rounded-full flex items-center justify-center text-2xl font-bold mb-6 mx-auto transform group-hover:scale-110 transition-transform duration-300">
+                      {step.number}
+                    </div>
                     <div className="text-4xl ml-4 transform group-hover:scale-110 transition-transform duration-300">
-                    {step.icon}
+                      {step.icon}
                     </div>
                   </div>
                   <h3 className="text-2xl font-semibold text-white mb-4 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-500 group-hover:via-pink-500 group-hover:to-orange-500 transition-all duration-300">
@@ -1699,11 +1739,11 @@ const MainContent = () => {
                   <div className="flex flex-col items-end">
                     <div className="text-sm text-gray-400 line-through mb-1">
                       $38
-                  </div>
+                    </div>
                     <div className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500">
                       $19
                       <span className="text-lg text-gray-400">/lifetime</span>
-                </div>
+                    </div>
                   </div>
                 </div>
                 <p className="text-gray-400 mb-8">
@@ -1764,11 +1804,11 @@ const MainContent = () => {
                   <div className="flex flex-col items-end">
                     <div className="text-sm text-gray-400 line-through mb-1">
                       $58
-                  </div>
+                    </div>
                     <div className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-orange-500">
                       $29
                       <span className="text-lg text-gray-400">/lifetime</span>
-                </div>
+                    </div>
                   </div>
                 </div>
                 <p className="text-gray-400 mb-8">
@@ -1838,11 +1878,11 @@ const MainContent = () => {
                   <div className="flex flex-col items-end">
                     <div className="text-sm text-gray-400 line-through mb-1">
                       $78
-                  </div>
+                    </div>
                     <div className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500">
                       $39
                       <span className="text-lg text-gray-400">/lifetime</span>
-                </div>
+                    </div>
                   </div>
                 </div>
                 <p className="text-gray-400 mb-8">
@@ -1957,7 +1997,7 @@ const MainContent = () => {
                     >
                       <path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z" />
                     </svg>
-                </div>
+                  </div>
                   <h3 className="text-2xl font-semibold text-white mb-4 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-pink-500 group-hover:to-purple-500 transition-all duration-300">
                     Connect with Us
                   </h3>
@@ -1966,8 +2006,8 @@ const MainContent = () => {
                     support, or feedback. We're here to help!
                   </p>
                   <motion.a
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
                     href="https://www.instagram.com/direct/t/17846796534096069"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -2393,9 +2433,9 @@ const MainContent = () => {
             >
               <h4 className="text-lg font-semibold mb-4 text-white">Company</h4>
               <ul className="space-y-3">
-                  <motion.li
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
+                <motion.li
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.5, delay: 0.2 }}
                 >
                   <Link
@@ -2426,12 +2466,12 @@ const MainContent = () => {
                 >
                   <a
                     href="#careers"
-                      className="text-gray-400 hover:text-white transition-colors relative group"
-                    >
+                    className="text-gray-400 hover:text-white transition-colors relative group"
+                  >
                     Careers
-                      <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 via-pink-500 to-orange-500 transition-all duration-300 group-hover:w-full"></span>
-                    </a>
-                  </motion.li>
+                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 via-pink-500 to-orange-500 transition-all duration-300 group-hover:w-full"></span>
+                  </a>
+                </motion.li>
                 <motion.li
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -2455,23 +2495,23 @@ const MainContent = () => {
             >
               <h4 className="text-lg font-semibold mb-4 text-white">Legal</h4>
               <ul className="space-y-3">
-                    <motion.li
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: 0.3 }}
-                    >
-                  <Link
-                    to="/privacy"
-                        className="text-gray-400 hover:text-white transition-colors relative group"
-                      >
-                    Privacy Policy
-                        <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 via-pink-500 to-orange-500 transition-all duration-300 group-hover:w-full"></span>
-                  </Link>
-                    </motion.li>
                 <motion.li
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
+                  transition={{ duration: 0.5, delay: 0.3 }}
+                >
+                  <Link
+                    to="/privacy"
+                    className="text-gray-400 hover:text-white transition-colors relative group"
+                  >
+                    Privacy Policy
+                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 via-pink-500 to-orange-500 transition-all duration-300 group-hover:w-full"></span>
+                  </Link>
+                </motion.li>
+                <motion.li
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5, delay: 0.4 }}
                 >
                   <Link
                     to="/terms"
@@ -2495,8 +2535,17 @@ const MainContent = () => {
                   </Link>
                 </motion.li>
               </ul>
-          </motion.div>
+
+              
+            </motion.div>
+
+
           </div>
+          <div className=" flex flex-row justify-center items-center w-full mt-10 border-t border-gray-700 pt-4 ">
+            <p>
+  &copy; {new Date().getFullYear()} JhrokeCamera. All rights reserved.
+</p>
+            </div>
         </div>
       </footer>
     </div>
@@ -2506,13 +2555,14 @@ const MainContent = () => {
 const App = () => (
   <Routes>
     <Route path="/" element={<MainContent />} />
-
-    <Route path="/about" element={<About />} />
-    <Route path="/blog" element={<Blog />} />
-    <Route path="/cookies" element={<CookiePolicy />} />
+    <Route path="/checkout" element={<Checkout />} />
     <Route path="/terms" element={<TermsOfService />} />
     <Route path="/privacy" element={<PrivacyPolicy />} />
-    <Route path="/checkout" element={<Checkout />} />
+    <Route path="/cookies" element={<CookiePolicy />} />
+    <Route path="/about" element={<About />} />
+    <Route path="/blog" element={<Blog />} />
+    <Route path="/voice-changer" element={<VoiceChanger />} />
+    <Route path="/live-cam-effects" element={<LiveCamEffects />} />
   </Routes>
 );
 
