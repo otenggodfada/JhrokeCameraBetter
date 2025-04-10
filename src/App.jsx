@@ -168,7 +168,7 @@ const MainContent = () => {
             <div className="flex items-center">
               <Link to="/" className="flex items-center">
                 <img
-                  src={logo}
+                  src={Footerlogo}
                   alt="JhrokeCamera Logo"
                   className="h-8 w-auto"
                 />
@@ -293,7 +293,9 @@ const MainContent = () => {
         </div>
 
         {/* Mobile Navigation */}
-        <motion.div
+       
+       {
+         isMobileMenuOpen && ( <motion.div
           initial={false}
           animate={{
             height: isMobileMenuOpen ? "auto" : 0,
@@ -376,7 +378,8 @@ const MainContent = () => {
               Contact Us
             </motion.a>
           </div>
-        </motion.div>
+        </motion.div>)
+       }
       </nav>
 
       {/* Sale Banner */}
