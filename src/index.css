@@ -1,0 +1,94 @@
+/** @format */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #000;
+  color: #fff;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-tech-dark text-white;
+  }
+}
+
+@layer components {
+  .tech-card {
+    @apply bg-tech-light/50 backdrop-blur-sm rounded-xl border border-tech-border/50 hover:border-tech-accent/50 transition-all duration-300 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-1px_rgba(0,0,0,0.06)] hover:shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-2px_rgba(0,0,0,0.05)];
+  }
+
+  .tech-button {
+    @apply bg-tech-accent text-white px-6 py-3 rounded-lg font-medium
+           hover:bg-tech-accent/90 transition-all duration-300;
+  }
+
+  .tech-heading {
+    @apply text-4xl md:text-5xl font-bold text-white;
+  }
+
+  .tech-subheading {
+    @apply text-xl text-gray-300 font-light;
+  }
+
+  .tech-border {
+    @apply relative before:absolute before:inset-0 before:bg-gradient-to-r before:from-neon-blue before:via-neon-purple before:to-neon-pink 
+           before:rounded-xl before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-300;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-tech-dark;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-tech-accent/30 rounded-full hover:bg-tech-accent/50 transition-colors duration-300;
+}
+
+/* Tech grid background */
+.tech-grid {
+  background-image: linear-gradient(
+      to right,
+      rgba(10, 10, 10, 0.1) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, rgba(10, 10, 10, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Neon text effect */
+.neon-text {
+  text-shadow: 0 0 5px #00f3ff, 0 0 10px #00f3ff, 0 0 15px #00f3ff;
+}
+
+/* Tech glow effect */
+.tech-glow {
+  box-shadow: 0 0 15px rgba(0, 243, 255, 0.3);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.tech-glow:hover {
+  box-shadow: 0 0 25px rgba(0, 243, 255, 0.5);
+}
