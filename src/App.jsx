@@ -1771,6 +1771,12 @@ const MainContent = () => {
                     <div className="w-5 h-5 mr-2 text-green-500 flex items-center justify-center">
                       ✓
                     </div>
+                    Limited Socials integration
+                  </li>
+                  <li className="flex items-center text-gray-300">
+                    <div className="w-5 h-5 mr-2 text-green-500 flex items-center justify-center">
+                      ✓
+                    </div>
                     Premium filters
                   </li>
                   <li className="flex items-center text-gray-300">
@@ -1848,7 +1854,7 @@ const MainContent = () => {
                     <div className="w-5 h-5 mr-2 text-green-500 flex items-center justify-center">
                       ✓
                     </div>
-                    Instagram integration
+                    All Socials integration
                   </li>
                   <li className="flex items-center text-gray-300">
                     <div className="w-5 h-5 mr-2 text-green-500 flex items-center justify-center">
