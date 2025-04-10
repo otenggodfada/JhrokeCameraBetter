@@ -24,6 +24,7 @@ import Blog from "./components/Blog";
 import VoiceChanger from "./pages/VoiceChanger";
 import LiveCamEffects from "./pages/LiveCamEffects";
 import CookieConsent from "./components/CookieConsent";
+import ScrollToTop from "./components/ScrollToTop";
 
 const MainContent = () => {
   const [timeLeft, setTimeLeft] = useState({
@@ -158,7 +159,7 @@ const MainContent = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black text-white">
+    <div className="min-h-screen bg-gray-900">
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled ? "bg-gray-900/80 backdrop-blur-md" : "bg-transparent"
@@ -2550,6 +2551,7 @@ const MainContent = () => {
         </div>
       </footer>
       <CookieConsent />
+      <ScrollToTop />
     </div>
   );
 };
