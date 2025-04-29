@@ -216,7 +216,7 @@ const MainContent = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-black">
       {/* Hiring Popup Notification */}
-      {showHiringPopup && (
+   {/* /*   {showHiringPopup && (
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -272,10 +272,10 @@ const MainContent = () => {
                     Remote Work
                   </div>
                 </div>
-              </div>
+              </div> */}
 
               {/* Types of Work Section */}
-              <div className="mb-6 sm:mb-8">
+              {/* <div className="mb-6 sm:mb-8">
                 <motion.button
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
@@ -373,8 +373,9 @@ const MainContent = () => {
               </div>
             </div>
           </motion.div>
-        </motion.div>
-      )}
+        </motion.div> */}
+      {/* )}  */}
+      
 
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -2688,7 +2689,7 @@ const MainContent = () => {
                     <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 via-pink-500 to-orange-500 transition-all duration-300 group-hover:w-full"></span>
                   </Link>
                 </motion.li>
-                <motion.li
+                {/* <motion.li
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.5, delay: 0.4 }}
@@ -2700,7 +2701,7 @@ const MainContent = () => {
                     Careers
                     <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 via-pink-500 to-orange-500 transition-all duration-300 group-hover:w-full"></span>
                   </Link>
-                </motion.li>
+                </motion.li> */}
                 <motion.li
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
