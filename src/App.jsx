@@ -27,7 +27,7 @@ import CookieConsent from "./components/CookieConsent";
 import ScrollToTop from "./components/ScrollToTop";
 import SystemRequirements from "./components/SystemRequirements";
 import Career from "./components/Career";
-
+import NotFound from "./NotFound"
 const MainContent = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -2794,6 +2794,7 @@ const App = () => (
     <Route path="/voice-changer" element={<VoiceChanger />} />
     <Route path="/live-cam-effects" element={<LiveCamEffects />} />
     <Route path="/career" element={<Career />} />
+        <Route path="*" element={<NotFound />} />
   </Routes>
 );
 
