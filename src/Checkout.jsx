@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import partners from "./images/partners.png";
 const Checkout = () => {
   const [selectedPlan, setSelectedPlan] = useState("Standard");
-  const [paymentMethod, setPaymentMethod] = useState("flutterwave");
   const [isProcessing, setIsProcessing] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [formData, setFormData] = useState({
@@ -16,8 +15,6 @@ const Checkout = () => {
   });
   const [selectedCrypto, setSelectedCrypto] = useState("btc");
   const [availableCurrencies, setAvailableCurrencies] = useState([]);
-  const [exchangeRate, setExchangeRate] = useState(1);
-  const [currencyCode, setCurrencyCode] = useState("USD");
 
   const countries = [
     { code: "US", name: "United States", dialCode: "+1" },
@@ -58,8 +55,8 @@ const Checkout = () => {
 
   const plans = {
     Standard: {
-      price: 19,
-      originalPrice: 29,
+      price: 70,
+      originalPrice: 100,
       features: [
         "Basic video effects",
         "Limited platform support",
@@ -68,8 +65,8 @@ const Checkout = () => {
       ],
     },
     Pro: {
-      price: 29,
-      originalPrice: 38,
+      price: 120,
+      originalPrice: 160,
       features: [
         "All Free features",
         "Advanced video effects",
@@ -80,8 +77,8 @@ const Checkout = () => {
       ],
     },
     Plus: {
-      price: 39,
-      originalPrice: 78,
+      price: 200,
+      originalPrice: 300,
       features: [
         "All Standard features",
         "Voice changer",
@@ -124,129 +121,6 @@ const Checkout = () => {
         ...prev,
         telephone: value,
       }));
-    }
-  };
-
-  // Add currency conversion function
-  const getCurrencyCode = (countryCode) => {
-    const currencyMap = {
-      US: "USD",
-      GB: "GBP",
-      NG: "NGN",
-      KE: "KES",
-      ZA: "ZAR",
-      GH: "GHS",
-      IN: "INR",
-      CA: "CAD",
-      AU: "AUD",
-      DE: "EUR",
-      FR: "EUR",
-      IT: "EUR",
-      ES: "EUR",
-      BR: "BRL",
-      JP: "JPY",
-      CN: "CNY",
-      RU: "RUB",
-      MX: "MXN",
-      EG: "EGP",
-      SA: "SAR",
-    };
-    return currencyMap[countryCode] || "USD";
-  };
-
-  // Add useEffect to fetch exchange rate when country changes
-  useEffect(() => {
-    const fetchExchangeRate = async () => {
-      if (formData.country) {
-        const newCurrencyCode = getCurrencyCode(formData.country);
-        setCurrencyCode(newCurrencyCode);
-
-        if (newCurrencyCode !== "USD") {
-          try {
-            const response = await fetch(
-              `https://api.exchangerate-api.com/v4/latest/USD`
-            );
-            const data = await response.json();
-            setExchangeRate(data.rates[newCurrencyCode]);
-          } catch (error) {
-            console.error("Error fetching exchange rate:", error);
-            setExchangeRate(1);
-          }
-        } else {
-          setExchangeRate(1);
-        }
-      }
-    };
-
-    fetchExchangeRate();
-  }, [formData.country]);
-
-  const handleFlutterwavePayment = async () => {
-    try {
-      console.log("Starting Flutterwave payment...");
-
-      // Calculate converted amount
-      const convertedAmount = plans[selectedPlan].price * exchangeRate;
-
-      // Check if Flutterwave script is already loaded
-      if (window.FlutterwaveCheckout) {
-        console.log("Flutterwave script already loaded");
-      } else {
-        console.log("Loading Flutterwave script...");
-        const script = document.createElement("script");
-        script.src = "https://checkout.flutterwave.com/v3.js";
-        script.async = true;
-        document.body.appendChild(script);
-
-        await new Promise((resolve, reject) => {
-          script.onload = resolve;
-          script.onerror = reject;
-        });
-        console.log("Flutterwave script loaded successfully");
-      }
-
-      // Initialize Flutterwave payment with converted amount
-      const paymentData = {
-        public_key: process.env.REACT_APP_FLUTTERWAVE_PUBLIC_KEY,
-        tx_ref: `tx-${Date.now()}`,
-        amount: convertedAmount,
-        currency: currencyCode,
-        payment_options: "card, banktransfer, ussd",
-        customer: {
-          email: formData.email,
-          phone_number: formData.telephone,
-          name: "Customer",
-        },
-        customizations: {
-          title: "Jhroke Camera",
-          description: `Payment for ${selectedPlan} Plan`,
-          logo: process.env.REACT_APP_LOGO_URL,
-        },
-        callback: function (response) {
-          console.log("Flutterwave callback response:", response);
-          if (response.status === "successful") {
-            setIsSuccess(true);
-          } else {
-            throw new Error(
-              `Payment failed: ${response.message || "Unknown error"}`
-            );
-          }
-        },
-        onclose: function () {
-          console.log("Flutterwave modal closed");
-          setIsProcessing(false);
-        },
-        meta: {
-          test_mode: true,
-        },
-      };
-
-      console.log("Initializing Flutterwave checkout with data:", paymentData);
-      window.FlutterwaveCheckout(paymentData);
-    } catch (error) {
-      console.error("Flutterwave payment error:", error);
-      setIsProcessing(false);
-      alert(`Payment failed: ${error.message}`);
     }
   };
 
@@ -330,93 +204,70 @@ const Checkout = () => {
         const data = await response.json();
         console.log("API Response:", data);
 
-        if (data.currencies && Array.isArray(data.currencies)) {
-          const formattedCurrencies = data.currencies.map((code) => ({
-            code: code.toLowerCase(),
-            name: getCurrencyName(code),
+        if (data.currencies) {
+          const formattedCurrencies = data.currencies.map((currency) => ({
+            code: currency.toLowerCase(),
+            name: getCurrencyName(currency),
           }));
-
-          // Sort currencies: popular ones first, then alphabetically
-          const popularCurrencies = [
-            "btc",
-            "eth",
-            "usdt",
-            "usdc",
-            "bnb",
-            "xrp",
-            "ada",
-            "doge",
-            "ltc",
-          ];
-          formattedCurrencies.sort((a, b) => {
-            const aIndex = popularCurrencies.indexOf(a.code);
-            const bIndex = popularCurrencies.indexOf(b.code);
-            if (aIndex !== -1 && bIndex !== -1) return aIndex - bIndex;
-            if (aIndex !== -1) return -1;
-            if (bIndex !== -1) return 1;
-            return a.name.localeCompare(b.name);
-          });
-
           setAvailableCurrencies(formattedCurrencies);
-          // Set BTC as default if available, otherwise use first currency
-          setSelectedCrypto(
-            formattedCurrencies.find((c) => c.code === "btc")?.code ||
-              formattedCurrencies[0]?.code
-          );
+        } else {
+          // Fallback to common cryptocurrencies if API doesn't return expected format
+          const fallbackCurrencies = [
+            { code: "btc", name: "Bitcoin" },
+            { code: "eth", name: "Ethereum" },
+            { code: "usdt", name: "Tether" },
+            { code: "usdc", name: "USD Coin" },
+            { code: "ltc", name: "Litecoin" },
+            { code: "bch", name: "Bitcoin Cash" },
+            { code: "xrp", name: "Ripple" },
+            { code: "doge", name: "Dogecoin" },
+          ];
+          setAvailableCurrencies(fallbackCurrencies);
         }
       } catch (error) {
         console.error("Error fetching currencies:", error);
-        // Fallback to default currencies
-        const defaultCurrencies = [
+        // Fallback to common cryptocurrencies
+        const fallbackCurrencies = [
           { code: "btc", name: "Bitcoin" },
           { code: "eth", name: "Ethereum" },
           { code: "usdt", name: "Tether" },
           { code: "usdc", name: "USD Coin" },
-          { code: "bnb", name: "Binance Coin" },
+          { code: "ltc", name: "Litecoin" },
+          { code: "bch", name: "Bitcoin Cash" },
+          { code: "xrp", name: "Ripple" },
+          { code: "doge", name: "Dogecoin" },
         ];
-        setAvailableCurrencies(defaultCurrencies);
-        setSelectedCrypto("btc");
+        setAvailableCurrencies(fallbackCurrencies);
       }
-    };
-
-    // Helper function to get readable currency names
-    const getCurrencyName = (code) => {
-      const names = {
-        btc: "Bitcoin",
-        eth: "Ethereum",
-        usdt: "Tether",
-        usdterc20: "Tether (ERC20)",
-        usdttrc20: "Tether (TRC20)",
-        usdc: "USD Coin",
-        ltc: "Litecoin",
-        doge: "Dogecoin",
-        bnb: "Binance Coin",
-        bnbmainnet: "Binance Coin (BSC)",
-        xrp: "Ripple",
-        ada: "Cardano",
-        sol: "Solana",
-        dot: "Polkadot",
-        trx: "TRON",
-        dai: "DAI",
-        busd: "Binance USD",
-        link: "Chainlink",
-        uni: "Uniswap",
-        xmr: "Monero",
-        algo: "Algorand",
-        xlm: "Stellar",
-        neo: "NEO",
-        etc: "Ethereum Classic",
-        waves: "Waves",
-        okb: "OKB",
-        ht: "Huobi Token",
-        zec: "Zcash",
-        dash: "Dash",
-      };
-      return names[code.toLowerCase()] || code.toUpperCase();
     };
 
     fetchCurrencies();
   }, []);
+
+  const getCurrencyName = (code) => {
+    const currencyNames = {
+      btc: "Bitcoin",
+      eth: "Ethereum",
+      usdt: "Tether",
+      usdc: "USD Coin",
+      ltc: "Litecoin",
+      bch: "Bitcoin Cash",
+      xrp: "Ripple",
+      doge: "Dogecoin",
+      ada: "Cardano",
+      dot: "Polkadot",
+      link: "Chainlink",
+      uni: "Uniswap",
+      matic: "Polygon",
+      sol: "Solana",
+      avax: "Avalanche",
+      atom: "Cosmos",
+      etc: "Ethereum Classic",
+      xlm: "Stellar",
+      trx: "TRON",
+    };
+    return currencyNames[code.toLowerCase()] || code.toUpperCase();
+  };
 
   const handleCryptoPayment = async () => {
     try {
@@ -948,13 +799,8 @@ const Checkout = () => {
     setIsProcessing(true);
 
     try {
-      if (paymentMethod === "flutterwave") {
-        console.log("Selected payment method: Flutterwave");
-        await handleFlutterwavePayment();
-      } else if (paymentMethod === "crypto") {
-        console.log("Selected payment method: NowPayments");
-        await handleCryptoPayment();
-      }
+      console.log("Selected payment method: Crypto");
+      await handleCryptoPayment();
     } catch (error) {
       console.error("Payment submission error:", error);
       setIsProcessing(false);
@@ -979,13 +825,12 @@ const Checkout = () => {
     return null;
   }
 
-  // Update the payment button text to show converted amount
+  // Update the payment button text
   const getPaymentButtonText = () => {
     if (isProcessing) {
       return "Processing...";
     }
-    const convertedAmount = plans[selectedPlan].price * exchangeRate;
-    return `Pay ${convertedAmount.toFixed(2)} ${currencyCode}`;
+    return `Pay ${plans[selectedPlan].price} USD with Crypto`;
   };
 
   return (
@@ -1154,39 +999,7 @@ const Checkout = () => {
                 <div className="space-y-3">
                   <label
                     className={`flex items-center p-4 rounded-lg border-2 transition-all duration-200 cursor-pointer ${
-                      paymentMethod === "flutterwave"
-                        ? "border-blue-500 bg-blue-500/10"
-                        : "border-gray-700 hover:border-gray-600"
-                    }`}
-                  >
-                    <input
-                      type="radio"
-                      name="paymentMethod"
-                      value="flutterwave"
-                      checked={paymentMethod === "flutterwave"}
-                      onChange={(e) => setPaymentMethod(e.target.value)}
-                      className="hidden"
-                    />
-                    <div className="flex items-center space-x-4 w-full">
-                      <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center overflow-hidden">
-                        <img
-                          src="https://www.pymnts.com/wp-content/uploads/2023/08/flutterwave-big.jpg"
-                          alt="Flutterwave"
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                      <div>
-                        <span className="font-medium">Flutterwave</span>
-                        <p className="text-sm text-gray-400">
-                          Pay with card, bank transfer, or mobile money
-                        </p>
-                      </div>
-                    </div>
-                  </label>
-
-                  <label
-                    className={`flex items-center p-4 rounded-lg border-2 transition-all duration-200 cursor-pointer ${
-                      paymentMethod === "crypto"
+                      "crypto"
                         ? "border-blue-500 bg-blue-500/10"
                         : "border-gray-700 hover:border-gray-600"
                     }`}
@@ -1195,8 +1008,8 @@ const Checkout = () => {
                       type="radio"
                       name="paymentMethod"
                       value="crypto"
-                      checked={paymentMethod === "crypto"}
-                      onChange={(e) => setPaymentMethod(e.target.value)}
+                      checked={true}
+                      onChange={(e) => {}}
                       className="hidden"
                     />
                     <div className="flex items-center space-x-4 w-full">
@@ -1212,8 +1025,7 @@ const Checkout = () => {
                         <p className="text-sm text-gray-400">
                           Pay with Bitcoin, Ethereum, or other cryptocurrencies
                         </p>
-                        {paymentMethod === "crypto" && (
-                          <div className="mt-4 space-y-4">
+                        <div className="mt-4 space-y-4">
                             <div className="bg-gray-800/30 rounded-lg p-4 border border-gray-700">
                               <label className="block text-sm font-medium text-gray-300 mb-2">
                                 Select Cryptocurrency
@@ -1326,7 +1138,6 @@ const Checkout = () => {
                               </div>
                             </div>
                           </div>
-                        )}
                       </div>
                     </div>
                   </label>

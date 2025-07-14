@@ -1962,10 +1962,10 @@ const MainContent = () => {
                   </h3>
                   <div className="flex flex-col items-end">
                     <div className="text-sm text-gray-400 line-through mb-1">
-                      $38
+                      $100
                     </div>
                     <div className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500">
-                      $19
+                      $70
                       <span className="text-lg text-gray-400">/lifetime</span>
                     </div>
                   </div>
@@ -2033,10 +2033,10 @@ const MainContent = () => {
                   <h3 className="text-2xl font-semibold text-white">Pro</h3>
                   <div className="flex flex-col items-end">
                     <div className="text-sm text-gray-400 line-through mb-1">
-                      $58
+                      $160
                     </div>
                     <div className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-orange-500">
-                      $29
+                      $120
                       <span className="text-lg text-gray-400">/lifetime</span>
                     </div>
                   </div>
@@ -2107,10 +2107,10 @@ const MainContent = () => {
                   <h3 className="text-2xl font-semibold text-white">Plus</h3>
                   <div className="flex flex-col items-end">
                     <div className="text-sm text-gray-400 line-through mb-1">
-                      $78
+                      $300
                     </div>
                     <div className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500">
-                      $39
+                      $200
                       <span className="text-lg text-gray-400">/lifetime</span>
                     </div>
                   </div>
